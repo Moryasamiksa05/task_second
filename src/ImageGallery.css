@@ -1,0 +1,94 @@
+.gallery {
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  background: white;
+}
+
+.gallery-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gallery-card {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.gallery-card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: auto;
+}
+
+.menu-container {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.menu-button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  outline: none;
+}
+
+.menu-button:focus {
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+
+.menu-dropdown {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 10;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  box-shadow: none;
+  white-space: nowrap;
+  min-width: 60px;
+}
+
+.delete-button:hover {
+  background-color: #e60000;
+  transform: scale(1.05);
+}
+

@@ -1,5 +1,4 @@
 import "./ImageUploader.css";
-
 import { useRef, useState, useEffect } from "react";
 
 const ImageUploader = ({ onUpload }) => {
@@ -25,7 +24,6 @@ const ImageUploader = ({ onUpload }) => {
     });
   };
 
-  // Open camera
   const openCamera = async () => {
     setShowCamera(true);
     try {
@@ -41,7 +39,6 @@ const ImageUploader = ({ onUpload }) => {
     }
   };
 
-  // Stop camera
   const closeCamera = () => {
     if (stream) {
       stream.getTracks().forEach((track) => track.stop());
@@ -49,7 +46,6 @@ const ImageUploader = ({ onUpload }) => {
     setShowCamera(false);
   };
 
-  // Capture photo
   const handleCapture = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -64,7 +60,6 @@ const ImageUploader = ({ onUpload }) => {
     }
   };
 
-  // Confirm captured image
   const confirmCapture = () => {
     setPreviews((prev) => [...prev, capturedImage]);
     setCapturedImage(null);
@@ -84,15 +79,13 @@ const ImageUploader = ({ onUpload }) => {
 
   useEffect(() => {
     return () => {
-      closeCamera(); // Cleanup
+      closeCamera();
     };
   }, []);
 
   return (
     <div className="uploader">
       <h2>Upload or Take Image</h2>
-
-      {/* File Upload */}
       <div className="upload-box" onClick={() => fileInputRef.current.click()}>
         <p>Click to select images</p>
         <input
@@ -105,30 +98,26 @@ const ImageUploader = ({ onUpload }) => {
         />
       </div>
 
-      {/* Camera Buttons */}
       {!showCamera && !capturedImage && (
-        <button onClick={openCamera}> Take Photo</button>
+        <button onClick={openCamera}>Take Photo</button>
       )}
 
-      {/* Camera Preview */}
       {showCamera && (
         <div className="camera-container">
           <video ref={videoRef} autoPlay playsInline />
-          <button onClick={handleCapture}> Capture</button>
+          <button onClick={handleCapture}>Capture</button>
           <button onClick={closeCamera}>Cancel</button>
         </div>
       )}
 
-      {/* Captured Image Preview */}
       {capturedImage && (
         <div className="capture-preview">
           <img src={capturedImage} alt="Captured" />
-          <button onClick={confirmCapture}> Use Photo</button>
+          <button onClick={confirmCapture}>Use Photo</button>
           <button onClick={retakePhoto}>Retake</button>
         </div>
       )}
 
-      {/* Preview Grid */}
       {previews.length > 0 && (
         <>
           <div className="preview-grid">
